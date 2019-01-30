@@ -5,10 +5,10 @@ from datetime import date
 
 # scrape today's page (for yesterday's weather)
 today = date.today()
-month = today.strftime("%B").lower()
+month = today.strftime('%B').lower()
 day = today.day
 year = today.year
-hyslop_url = f'https://agsci.oregonstate.edu/weather/{month}-{day}-{year}'
+hyslop_url = f"https://agsci.oregonstate.edu/weather/{month}-{day}-{year}"
 r = requests.get(hyslop_url)
 
 # extract values from results
@@ -39,6 +39,5 @@ r = requests.post('https://api.pushover.net/1/messages.json', data = {
     'user': os.environ['PUSHOVER_USER_KEY'],
     'message': msg,
     'title': title,
-    'url': os.getenv(hyslop_url),
     'device': os.environ['PUSHOVER_DEVICE']
 })
