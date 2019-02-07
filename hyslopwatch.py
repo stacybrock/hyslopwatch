@@ -12,12 +12,12 @@ hyslop_url = f"https://agsci.oregonstate.edu/weather/{month}-{day}-{year}"
 r = requests.get(hyslop_url)
 
 # extract values from results
-regex = r"Ending at Observaton Max:.*?field-item\s.*?>(.*?)</div>"
+regex = r"Ending at Observation Max:.*?field-item\s.*?>(.*?)</div>"
 matches = re.finditer(regex, r.text, re.MULTILINE)
 for matchNum, match in enumerate(matches):
     max_temp = match.group(1)
 
-regex = r"Ending at Observaton Min:.*?field-item\s.*?>(.*?)</div>"
+regex = r"Ending at Observation Min:.*?field-item\s.*?>(.*?)</div>"
 matches = re.finditer(regex, r.text, re.MULTILINE)
 for matchNum, match in enumerate(matches):
     min_temp = match.group(1)
